@@ -1,109 +1,82 @@
 import { Request, Response } from "express";
-import Project from "../models/Project";
+import { validationResult } from "express-validator";
 
-// GET /projects
-export const getProjects = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
+import Project from "../models/Project";
+import { asyncHandler } from "../utils/asyncHandler";
+
+export const getProjects = asyncHandler(async (req: Request, res: Response) => {
     const projects = await Project.find();
 
     res.status(200).json(projects);
-  } catch (error) {
-    res.status(500).json({ message: "Something went wrong" });
-  }
-};
+});
 
-// GET /projects/:id
-export const getProjectById = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
+export const getProjectById = asyncHandler(async (req: Request, res: Response) => {
+
     const project = await Project.findById(req.params.id);
 
     if (!project) {
-      res.status(404).json({
-        message: "Project not found",
-      });
-      return;
+        res.status(404).json({
+            message: "Project not found",
+        });
+        return;
     }
 
-    res.status(200).json(project);
-  } catch (error) {
-    res.status(500).json({
-      message: "Something went wrong",
-    });
-  }
-};
+    res.json(project);
+});
 
-// POST /projects
-export const createProject = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
+export const createProject = asyncHandler(async (req: Request, res: Response) => {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        res.status(400).json(errors.array());
+        return;
+    }
+
     const project = await Project.create(req.body);
 
     res.status(201).json(project);
-  } catch (error) {
-    res.status(500).json({
-      message: "Something went wrong",
-    });
-  }
-};
+});
 
-// PUT /projects/:id
-export const updateProject = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
+export const updateProject = asyncHandler(async (req: Request, res: Response) => {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        res.status(400).json(errors.array());
+        return;
+    }
+
     const project = await Project.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
+        req.params.id,
+        req.body,
+        {
+            new: true,
+        }
     );
 
     if (!project) {
-      res.status(404).json({
-        message: "Project not found",
-      });
-      return;
+        res.status(404).json({
+            message: "Project not found",
+        });
+        return;
     }
 
-    res.status(200).json(project);
-  } catch (error) {
-    res.status(500).json({
-      message: "Something went wrong",
-    });
-  }
-};
+    res.json(project);
+});
 
-// DELETE /projects/:id
-export const deleteProject = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
+export const deleteProject = asyncHandler(async (req: Request, res: Response) => {
+
     const project = await Project.findByIdAndDelete(req.params.id);
 
     if (!project) {
-      res.status(404).json({
-        message: "Project not found",
-      });
-      return;
+        res.status(404).json({
+            message: "Project not found",
+        });
+        return;
     }
 
-    res.status(200).json({
-      message: "Project deleted successfully",
+    res.json({
+        message: "Project deleted successfully",
     });
-  } catch (error) {
-    res.status(500).json({
-      message: "Something went wrong",
-    });
-  }
-};
+});

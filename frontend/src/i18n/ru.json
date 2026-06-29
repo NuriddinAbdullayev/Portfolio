@@ -1,0 +1,9 @@
+{
+  "home": "Главная",
+  "about": "Обо мне",
+  "skills": "Навыки",
+  "projects": "Проекты",
+  "contact": "Контакты",
+  "heroTitle": "Привет, я Нуриддин Абдуллаев",
+  "heroSubtitle": "Full Stack разработчик, работающий с React, Node.js и MongoDB."
+}

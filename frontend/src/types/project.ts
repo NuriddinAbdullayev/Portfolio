@@ -1,0 +1,21 @@
+export interface Project {
+  _id: string;
+
+  title: string;
+
+  description: string;
+
+  image: string;
+
+  technologies: string[];
+
+  github: string;
+
+  demo: string;
+
+  category: string;
+
+  createdAt: string;
+
+  updatedAt: string;
+}

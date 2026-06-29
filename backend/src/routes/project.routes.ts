@@ -12,12 +12,24 @@ import {
 const router = Router();
 
 const projectValidation = [
-    body("title").notEmpty(),
-    body("description").notEmpty(),
-    body("image").notEmpty(),
-    body("github").notEmpty(),
-    body("demo").notEmpty(),
-    body("category").notEmpty(),
+    body("title")
+    .notEmpty()
+    .withMessage("Title is required"),
+    body("description")
+    .notEmpty()
+    .withMessage("Description is required"),
+    body("image")
+    .notEmpty()
+    .withMessage("Image is required"),
+    body("github")
+    .notEmpty()
+    .withMessage("Github is required"),
+    body("demo")
+    .notEmpty()
+    .withMessage("Demo is required"),
+    body("category")
+    .notEmpty()
+    .withMessage("Category is required"),
 ];
 
 router.get("/", getProjects);
