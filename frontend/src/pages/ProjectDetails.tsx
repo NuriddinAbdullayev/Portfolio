@@ -93,13 +93,13 @@ function ProjectDetails() {
             GitHub
           </Button>
 
-          <Button
+          {/* <Button
             variant="outlined"
             href={data.demo}
             target="_blank"
           >
             Live Demo
-          </Button>
+          </Button> */}
         </Stack>
       </Stack>
     </Container>
