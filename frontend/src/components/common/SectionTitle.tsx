@@ -10,8 +10,10 @@ function SectionTitle({ title, subtitle }: Props) {
     <>
       <Typography
         variant="h3"
-        fontWeight={700}
         gutterBottom
+        sx={{
+          fontWeight: 700,
+        }}
       >
         {title}
       </Typography>

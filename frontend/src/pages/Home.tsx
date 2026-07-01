@@ -13,11 +13,11 @@ function Home() {
     <Container>
       <Stack
         spacing={4}
-        alignItems="center"
-        justifyContent="center"
         sx={{
           minHeight: "85vh",
           textAlign: "center",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <motion.div
@@ -27,7 +27,9 @@ function Home() {
         >
           <Typography
             variant="h2"
-            fontWeight={800}
+            sx={{
+              fontWeight: 800,
+            }}
           >
             {t("heroTitle")}
           </Typography>

@@ -18,8 +18,8 @@ function Navbar() {
       >
         <Typography
           variant="h5"
-          fontWeight={700}
           sx={{
+            fontWeight: 700,
             flexGrow: 1,
           }}
         >

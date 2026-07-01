@@ -51,7 +51,9 @@ function ProjectDetails() {
 
         <Typography
           variant="h3"
-          fontWeight={700}
+          sx={{
+            fontWeight: 700,
+          }}
         >
           {data.title}
         </Typography>
@@ -70,7 +72,9 @@ function ProjectDetails() {
         <Stack
           direction="row"
           spacing={1}
-          flexWrap="wrap"
+          sx={{
+            flexWrap: "wrap",
+          }}
         >
           {data.technologies.map((tech) => (
             <Chip

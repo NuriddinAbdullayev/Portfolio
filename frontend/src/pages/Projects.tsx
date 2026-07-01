@@ -62,7 +62,9 @@ function Projects() {
       <Stack
         direction={{ xs: "column", md: "row" }}
         spacing={2}
-        mb={4}
+        sx={{
+          mb: 4,
+        }}
       >
         <ProjectSearch
           value={search}

@@ -38,7 +38,9 @@ function ProjectCard({ project }: Props) {
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography
           variant="h5"
-          fontWeight={700}
+          sx={{
+            fontWeight: 700,
+          }}
         >
           {project.title}
         </Typography>
@@ -58,8 +60,10 @@ function ProjectCard({ project }: Props) {
         <Stack
           direction="row"
           spacing={1}
-          mt={3}
-          flexWrap="wrap"
+          sx={{
+            mt: 3,
+            flexWrap: "wrap",
+          }}
         >
           {project.technologies.map((tech) => (
             <Chip
@@ -74,7 +78,9 @@ function ProjectCard({ project }: Props) {
         <Stack
           direction="row"
           spacing={2}
-          mt={4}
+          sx={{
+            mt: 4,
+          }}
         >
           <Button
             component={Link}
