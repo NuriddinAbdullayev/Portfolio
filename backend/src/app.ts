@@ -16,6 +16,12 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Portfolio API is running 🚀",
+  });
+});
+
 app.use("/projects", projectRoutes);
 
 app.use((req, res) => {
